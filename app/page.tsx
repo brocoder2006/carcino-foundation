@@ -57,7 +57,10 @@ export default function Home() {
         {/* 3. Article Gallery Section */}
         <ArticleGallery />
 
-        {/* 4. Pull-Quote Block #1 (Maya Rodriguez) */}
+        {/* 4. Recruitment / Contribution CTA Section */}
+        <RecruitmentCTA />
+
+        {/* 5. Pull-Quote Block #1 (Maya Rodriguez) */}
         <PullQuoteBlock
           quote={FIRST_PULL_QUOTE.quote}
           author={FIRST_PULL_QUOTE.author}

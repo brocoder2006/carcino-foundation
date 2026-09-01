@@ -5,6 +5,51 @@ import { motion } from "framer-motion";
 import { ARTICLES, Article } from "@/lib/data";
 import { ArticleReaderModal } from "./Modals";
 
+const CARD_GLOW_THEMES = [
+  {
+    // Card 1: Rose Pink / Crimson Glow
+    borderHover: "hover:border-[#FF5A5F]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(255,90,95,0.4)]",
+    lineGradient: "from-transparent via-[#FF5A5F] to-transparent",
+    authorHover: "group-hover:text-[#FF8A8E]",
+  },
+  {
+    // Card 2: Warm Amber / Gold Glow
+    borderHover: "hover:border-[#FFB84D]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(255,184,77,0.4)]",
+    lineGradient: "from-transparent via-[#FFB84D] to-transparent",
+    authorHover: "group-hover:text-[#FFD185]",
+  },
+  {
+    // Card 3: Bright Yellow / Lemon Glow
+    borderHover: "hover:border-[#FFE566]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(255,229,102,0.4)]",
+    lineGradient: "from-transparent via-[#FFE566] to-transparent",
+    authorHover: "group-hover:text-[#FFF099]",
+  },
+  {
+    // Card 4: Emerald / Mint Green Glow
+    borderHover: "hover:border-[#4CD97B]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(76,217,123,0.4)]",
+    lineGradient: "from-transparent via-[#4CD97B] to-transparent",
+    authorHover: "group-hover:text-[#80EAA4]",
+  },
+  {
+    // Card 5: Electric Cyan / Sky Blue Glow
+    borderHover: "hover:border-[#4DA3FF]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(77,163,255,0.4)]",
+    lineGradient: "from-transparent via-[#4DA3FF] to-transparent",
+    authorHover: "group-hover:text-[#85C2FF]",
+  },
+  {
+    // Card 6: Vivid Violet / Purple Glow
+    borderHover: "hover:border-[#A66DFF]/75",
+    shadowHover: "hover:shadow-[0_0_40px_rgba(166,109,255,0.4)]",
+    lineGradient: "from-transparent via-[#A66DFF] to-transparent",
+    authorHover: "group-hover:text-[#C49CFF]",
+  },
+];
+
 export default function ArticleGallery() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
@@ -36,36 +81,42 @@ export default function ArticleGallery() {
 
         {/* 3-Column x 2-Row Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl">
-          {ARTICLES.map((article, i) => (
-            <motion.div
-              key={article.id}
-              initial={{ opacity: 0, y: 30, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              onClick={() => setSelectedArticle(article)}
-              className="bg-[#0E121E]/95 hover:bg-[#131828] border border-white/10 hover:border-purple-400/50 rounded-[1.8rem] sm:rounded-[2.2rem] p-6 py-8 sm:p-10 flex flex-col items-center justify-center text-center group cursor-pointer min-h-[170px] sm:aspect-[16/9.5] relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.4)] transition-all duration-300"
-            >
-              {/* Soft Inner Highlight Arc */}
-              <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          {ARTICLES.map((article, i) => {
+            const theme = CARD_GLOW_THEMES[i % CARD_GLOW_THEMES.length];
+            return (
+              <motion.div
+                key={article.id}
+                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                onClick={() => setSelectedArticle(article)}
+                className={`bg-[#0D101A] hover:bg-[#121626] border border-white/10 ${theme.borderHover} ${theme.shadowHover} rounded-[1.8rem] sm:rounded-[2.2rem] p-6 py-8 sm:p-10 flex flex-col items-center justify-center text-center group cursor-pointer min-h-[170px] sm:aspect-[16/9.5] relative overflow-hidden transition-all duration-300`}
+              >
+                {/* Glowing Top Edge Line */}
+                <div className={`absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r ${theme.lineGradient} opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
 
-              {/* Eyebrow: research article */}
-              <span className="font-serif italic text-purple-300/80 text-sm mb-3 font-[400]">
-                {article.eyebrow}
-              </span>
+                {/* Glowing Bottom Edge Line */}
+                <div className={`absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r ${theme.lineGradient} opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
 
-              {/* Title: GERM CELL TUMOR, EWING SARCOMA, etc. */}
-              <h3 className="font-heading font-[800] text-[#F5F6F8] group-hover:text-white tracking-widest text-xl sm:text-2xl uppercase max-w-[210px] leading-tight text-center my-1 transition-colors">
-                {article.title}
-              </h3>
+                {/* Eyebrow: research article */}
+                <span className="font-serif italic text-purple-300/80 text-sm mb-3 font-[400]">
+                  {article.eyebrow}
+                </span>
 
-              {/* Byline Author */}
-              <span className="text-purple-300/70 group-hover:text-purple-200 text-xs sm:text-sm font-medium mt-3 transition-colors">
-                {article.author}
-              </span>
-            </motion.div>
-          ))}
+                {/* Title: SMALL INTESTINE CANCER, ANAL CANCER, etc. */}
+                <h3 className="font-heading font-[800] text-[#F5F6F8] group-hover:text-white tracking-widest text-xl sm:text-2xl uppercase max-w-[210px] leading-tight text-center my-1 transition-colors">
+                  {article.title}
+                </h3>
+
+                {/* Byline Author */}
+                <span className={`text-purple-300/70 ${theme.authorHover} text-xs sm:text-sm font-medium mt-3 transition-colors`}>
+                  {article.author}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Bottom Pill CTA Button */}

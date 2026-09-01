@@ -30,8 +30,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["var(--font-inter-tight)", "Inter", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        heading: ["'Familjen Grotesk'", "var(--font-inter-tight)", "Inter", "sans-serif"],
+        body: ["'Familjen Grotesk'", "var(--font-inter)", "sans-serif"],
+        galindo: ["'Galindo'", "cursive", "sans-serif"],
+        oleo: ["'Oleo Script'", "cursive", "serif"],
         quote: ["var(--font-fraunces)", "Georgia", "serif"],
         editorial: ["var(--font-cormorant)", "Georgia", "serif"],
         instrument: ["var(--font-instrument)", "Georgia", "serif"],
