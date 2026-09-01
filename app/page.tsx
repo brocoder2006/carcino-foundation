@@ -38,8 +38,8 @@ export default function Home() {
       <div className="noise-overlay" aria-hidden="true" />
 
       {/* Ambient background glow shapes */}
-      <div className="fixed top-20 left-10 w-96 h-96 bg-teal/5 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="fixed top-1/2 right-10 w-96 h-96 bg-pride-purple/5 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="fixed top-20 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-teal/5 rounded-full blur-[120px] pointer-events-none z-0 overflow-hidden" />
+      <div className="fixed top-1/2 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-pride-purple/5 rounded-full blur-[140px] pointer-events-none z-0 overflow-hidden" />
 
       {/* 1. Sticky Navigation Bar */}
       <Navbar onOpenSignUp={() => setIsSignUpOpen(true)} />

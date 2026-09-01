@@ -38,16 +38,15 @@ export default function ScrambleText({
         const currentLength = Math.floor(progress * totalLength);
         let result = "";
 
-        for (let i = 0; i < totalLength; i++) {
+        const endIdx = Math.min(totalLength, currentLength + 4);
+        for (let i = 0; i < endIdx; i++) {
           const char = targetText[i];
           if (char === "\n" || char === " ") {
             result += char;
           } else if (i < currentLength) {
             result += char;
-          } else if (i < currentLength + 4) {
-            result += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
           } else {
-            result += " ";
+            result += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
           }
         }
 
@@ -72,7 +71,7 @@ export default function ScrambleText({
   return (
     <h1
       ref={textRef}
-      className={`font-swash-serif text-[clamp(1.75rem,5.8vw,5.25rem)] leading-[1.08] sm:leading-[1.04] tracking-wide text-white uppercase max-w-4xl drop-shadow-md select-none min-h-[3.5em] sm:min-h-[3.2em] px-2 text-center flex items-center justify-center ${className}`}
+      className={`font-swash-serif text-[clamp(1.6rem,5.5vw,5rem)] leading-[1.08] sm:leading-[1.04] tracking-wide text-white uppercase max-w-full drop-shadow-md select-none min-h-[3.2em] px-3 text-center flex items-center justify-center break-words overflow-hidden ${className}`}
     >
       {phrases[0]}
     </h1>
