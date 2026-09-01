@@ -43,15 +43,15 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
         </Link>
       </div>
 
-      {/* Floating Center Pill Navigation Bar */}
-      <header className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] sm:w-auto max-w-5xl">
-        <nav className="bg-white/[0.14] backdrop-blur-3xl border border-white/25 rounded-full px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center justify-between md:justify-start gap-2 sm:gap-3.5 shadow-[0_15px_45px_rgba(0,0,0,0.35)] transition-all">
-          {/* Brand Logo & Ribbon */}
+      {/* Floating Center Pill Navigation Bar with Liquid Glassmorphism */}
+      <header className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[90vw] sm:w-auto max-w-5xl">
+        <nav className="liquid-glass-nav rounded-full px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center justify-between md:justify-start gap-2 sm:gap-3.5 transition-all">
+          {/* Left 3D Liquid Ribbon Circle Logo */}
           <Link
             href="#home"
             className="flex items-center gap-2.5 flex-shrink-0 group"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center text-white text-base sm:text-lg transition-transform group-hover:scale-105 shadow-md">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass-circle flex items-center justify-center text-white text-base sm:text-lg transition-transform group-hover:scale-105">
               🎗️
             </div>
             <span className="font-heading font-[700] text-sm sm:text-base tracking-wider text-white md:hidden lg:inline-block">
@@ -59,7 +59,7 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
             </span>
           </Link>
 
-          {/* Desktop Navigation Links (Only visible on md+ screens) */}
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-1.5 mx-auto">
             {NAV_LINKS.map((link) => {
               const isActive = activeTab === link.label;
@@ -70,8 +70,8 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
                   onClick={() => setActiveTab(link.label)}
                   className={`px-4 lg:px-5 py-2 rounded-full text-xs lg:text-sm font-medium transition-all duration-300 ${
                     isActive
-                      ? "bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-white shadow-[0_0_20px_rgba(156,64,255,0.45)] scale-105"
-                      : "text-white/85 hover:text-white hover:bg-white/12"
+                      ? "liquid-glass-active text-white scale-105"
+                      : "text-white/85 hover:text-white hover:bg-white/15"
                   }`}
                 >
                   {link.label}
@@ -80,11 +80,11 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
             })}
           </div>
 
-          {/* Desktop Language Dropdown (Only visible on md+ screens) */}
+          {/* Desktop Language Dropdown */}
           <div className="relative hidden md:block">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1.5 bg-white/12 hover:bg-white/22 border border-white/20 rounded-full px-3.5 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm text-white font-medium transition-all"
+              className="flex items-center gap-1.5 liquid-glass-btn rounded-full px-3.5 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm text-white font-medium"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
@@ -125,10 +125,10 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
             </AnimatePresence>
           </div>
 
-          {/* Sign Up Account Icon Button (Desktop) */}
+          {/* Sign Up Account Button */}
           <button
             onClick={onOpenSignUp}
-            className="hidden md:flex w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/12 hover:bg-white/25 border border-white/20 items-center justify-center text-white text-sm transition-transform hover:scale-105 flex-shrink-0 shadow-md"
+            className="hidden md:flex w-9 h-9 sm:w-10 sm:h-10 rounded-full liquid-glass-btn items-center justify-center text-white text-sm flex-shrink-0"
             title="Sign Up / Join Campaign"
           >
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">

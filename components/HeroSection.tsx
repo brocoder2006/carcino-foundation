@@ -55,7 +55,7 @@ export default function HeroSection() {
         >
           <a
             href="#articles"
-            className="bg-white/15 hover:bg-white/25 border border-white/35 backdrop-blur-md text-white font-medium px-7 py-3 rounded-full text-sm inline-flex items-center gap-2 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all hover:scale-105 group"
+            className="liquid-glass-btn text-white font-medium px-8 py-3.5 rounded-full text-sm inline-flex items-center gap-2.5 shadow-2xl transition-all group"
           >
             <span>Read Articles</span>
             <span className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
