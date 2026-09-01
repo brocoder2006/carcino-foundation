@@ -30,7 +30,7 @@ export default function ArticleGallery() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="font-body text-[#94A3B8] text-sm sm:text-base max-w-xl mx-auto mt-4 text-center leading-relaxed font-[400]"
           >
-            Here's the latest collection of articles we offer, tailored to be understandable by everyone, made with love and care by our Writing Team.
+            Here&apos;s the latest collection of articles we offer, tailored to be understandable by everyone, made with love and care by our Writing Team.
           </motion.p>
         </div>
 
