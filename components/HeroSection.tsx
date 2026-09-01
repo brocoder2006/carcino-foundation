@@ -14,15 +14,15 @@ export default function HeroSection() {
           className="w-full h-full"
         >
           <img
-            src="/images/pride-hero-bg.png"
-            alt="The Carcino Foundation Pride Month Campaign"
-            className="w-full h-full object-cover object-center filter brightness-95 contrast-105"
+            src="/images/aesthetic-hero-bg.png"
+            alt="The Carcino Foundation Campaign Wallpaper"
+            className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08] saturate-[1.15]"
           />
         </motion.div>
 
-        {/* Soft Blue Atmospheric Vignette & Bottom Navy Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/40 via-blue-900/20 to-[#0B0F1A]" />
-        <div className="absolute inset-0 bg-radial-vignette opacity-60 pointer-events-none" />
+        {/* Rich Atmospheric Purple Vignette Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/65 via-navy-950/50 to-[#0B0F1A]" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-70 pointer-events-none" />
       </div>
 
       {/* Hero Content Container */}
