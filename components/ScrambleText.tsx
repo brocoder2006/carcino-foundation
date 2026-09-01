@@ -72,7 +72,7 @@ export default function ScrambleText({
   return (
     <h1
       ref={textRef}
-      className={`font-swash-serif text-[clamp(2.5rem,6.8vw,5.25rem)] leading-[1.04] tracking-wide text-white uppercase max-w-4xl drop-shadow-md select-none min-h-[3.2em] flex items-center justify-center ${className}`}
+      className={`font-swash-serif text-[clamp(1.75rem,5.8vw,5.25rem)] leading-[1.08] sm:leading-[1.04] tracking-wide text-white uppercase max-w-4xl drop-shadow-md select-none min-h-[3.5em] sm:min-h-[3.2em] px-2 text-center flex items-center justify-center ${className}`}
     >
       {phrases[0]}
     </h1>

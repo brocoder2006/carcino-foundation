@@ -45,7 +45,7 @@ export default function ArticleGallery() {
               transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
               whileHover={{ y: -6, scale: 1.02 }}
               onClick={() => setSelectedArticle(article)}
-              className="bg-[#0E121E]/95 hover:bg-[#131828] border border-white/10 hover:border-purple-400/50 rounded-[2.2rem] p-8 sm:p-10 flex flex-col items-center justify-center text-center group cursor-pointer aspect-[16/9.5] relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.4)] transition-all duration-300"
+              className="bg-[#0E121E]/95 hover:bg-[#131828] border border-white/10 hover:border-purple-400/50 rounded-[1.8rem] sm:rounded-[2.2rem] p-6 py-8 sm:p-10 flex flex-col items-center justify-center text-center group cursor-pointer min-h-[170px] sm:aspect-[16/9.5] relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.4)] transition-all duration-300"
             >
               {/* Soft Inner Highlight Arc */}
               <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
