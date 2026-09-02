@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import KineticMarquee from "@/components/KineticMarquee";
 import CustomCursor from "@/components/CustomCursor";
-import PageLoader from "@/components/PageLoader";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import AwwwardsFloatingWidget from "@/components/AwwwardsFloatingWidget";
 import DuplicateTextRevealSection from "@/components/DuplicateTextRevealSection";
@@ -37,9 +36,6 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#0F0A1C] text-[#F5F6F8] selection:bg-purple-500/30 selection:text-white">
-      {/* Awwwards GSAP Preloader Curtain Entrance */}
-      <PageLoader />
-
       {/* Dynamic Scroll Progress Bar */}
       <ScrollProgressBar />
 
