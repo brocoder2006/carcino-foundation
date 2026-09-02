@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import { Article, RecruitmentRole } from "@/lib/data";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
@@ -271,10 +272,11 @@ export function ArticleReaderModal({ article, onClose }: { article: Article | nu
 
         {/* 3D Zoom Hero Image */}
         <div className="modal-stagger-item relative w-full h-60 sm:h-72 rounded-2xl overflow-hidden my-4 border border-white/15 shadow-2xl group">
-          <img
+          <Image
             src={article.image}
             alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent opacity-60" />
         </div>
