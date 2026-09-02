@@ -30,7 +30,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["'Familjen Grotesk'", "var(--font-inter-tight)", "Inter", "sans-serif"],
+        wintersolace: ["'Winter Solace'", "serif"],
+        heading: ["'Winter Solace'", "'Familjen Grotesk'", "var(--font-inter-tight)", "Inter", "sans-serif"],
         body: ["'Familjen Grotesk'", "var(--font-inter)", "sans-serif"],
         galindo: ["'Galindo'", "cursive", "sans-serif"],
         oleo: ["'Oleo Script'", "cursive", "serif"],

@@ -3,6 +3,12 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import KineticMarquee from "@/components/KineticMarquee";
+import CustomCursor from "@/components/CustomCursor";
+import PageLoader from "@/components/PageLoader";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import AwwwardsFloatingWidget from "@/components/AwwwardsFloatingWidget";
+import DuplicateTextRevealSection from "@/components/DuplicateTextRevealSection";
 import ArticleGallery from "@/components/ArticleGallery";
 import PullQuoteBlock from "@/components/PullQuoteBlock";
 import MissionSection from "@/components/MissionSection";
@@ -31,7 +37,19 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#0B0F1A] text-[#F5F6F8] selection:bg-teal/30 selection:text-white">
-      {/* GSAP ScrollTrigger & Magnetic Animations */}
+      {/* Awwwards GSAP Preloader Curtain Entrance */}
+      <PageLoader />
+
+      {/* Dynamic Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* Gen Z Interactive Spring Trailing Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Awwwards Quick Navigation & Status Widget */}
+      <AwwwardsFloatingWidget />
+
+      {/* GSAP ScrollTrigger, SplitText, ScrambleText & 3D Tilt Animations */}
       <GsapAnimations />
 
       {/* Low-opacity noise/grain texture overlay across entire page */}
@@ -41,33 +59,46 @@ export default function Home() {
       <div className="fixed top-20 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-teal/5 rounded-full blur-[120px] pointer-events-none z-0 overflow-hidden" />
       <div className="fixed top-1/2 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-pride-purple/5 rounded-full blur-[140px] pointer-events-none z-0 overflow-hidden" />
 
-      {/* 1. Sticky Navigation Bar */}
+      {/* 1. Sticky Navigation Bar with Observer & ScrollTrigger */}
       <Navbar onOpenSignUp={() => setIsSignUpOpen(true)} />
 
       {/* Main Content Sections */}
       <main className="relative z-10">
-        {/* 2. Hero Section */}
+        {/* 2. Hero Section with ScrambleText & Floating Parallax Shapes */}
         <HeroSection />
 
-        {/* Subtle Pride Bar Divider */}
-        <div className="max-w-7xl mx-auto px-6 opacity-30">
-          <div className="pride-bar rounded-full" />
-        </div>
+        {/* High-Velocity Kinetic Marquee Ticker */}
+        <KineticMarquee />
 
-        {/* 3. Article Gallery Section */}
+        {/* 3. Duplicate-Layer Text Reveal (Scroll-Pinned) */}
+        <DuplicateTextRevealSection />
+
+        {/* High-Velocity Reverse Kinetic Marquee Ticker */}
+        <KineticMarquee
+          reverse
+          items={[
+            "🎗️ THE CARCINO FOUNDATION",
+            "✨ STUDENT-LED CANCER RESEARCH",
+            "🎗️ CANCER EDUCATION FOR ALL",
+            "⚡ HEALTH EQUITY & PRIDE",
+            "🎓 STUDENT ADVOCACY",
+          ]}
+        />
+
+        {/* 4. Showcase Article Gallery Section */}
         <ArticleGallery />
 
-        {/* 4. Recruitment / Contribution CTA Section */}
+        {/* 5. Recruitment / Contribution CTA Section */}
         <RecruitmentCTA />
 
-        {/* 5. Pull-Quote Block #1 (Maya Rodriguez) */}
+        {/* 6. Pull-Quote Block #1 (Maya Rodriguez) */}
         <PullQuoteBlock
           quote={FIRST_PULL_QUOTE.quote}
           author={FIRST_PULL_QUOTE.author}
           title={FIRST_PULL_QUOTE.title}
         />
 
-        {/* 5. Mission Section */}
+        {/* 7. Mission Section */}
         <MissionSection />
 
         {/* Subtle Pride Bar Divider */}
@@ -75,7 +106,7 @@ export default function Home() {
           <div className="pride-bar rounded-full" />
         </div>
 
-        {/* 6. Repeat Quote Block + "Meet the team" Button (Dr. Aisha Patel) */}
+        {/* 8. Repeat Quote Block + "Meet the team" Button (Dr. Aisha Patel) */}
         <PullQuoteBlock
           quote={SECOND_PULL_QUOTE.quote}
           author={SECOND_PULL_QUOTE.author}
@@ -84,14 +115,14 @@ export default function Home() {
           buttonHref={SECOND_PULL_QUOTE.buttonHref}
         />
 
-        {/* 7. Oncologist Advisory Panel */}
+        {/* 9. Oncologist Advisory Panel */}
         <OncologistPanel />
 
-        {/* 8. Recruitment CTA Section */}
+        {/* 10. Recruitment CTA Section */}
         <RecruitmentCTA />
       </main>
 
-      {/* 9. Footer */}
+      {/* 11. Footer */}
       <Footer />
 
       {/* Interactive Modals */}

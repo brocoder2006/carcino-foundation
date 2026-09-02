@@ -1,118 +1,111 @@
 "use client";
 
-import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { CustomEase } from "gsap/CustomEase";
+import { Observer } from "gsap/Observer";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin, CustomEase, Observer);
+  CustomEase.create("gsapEase", "M0,0 C0.65,0 0.35,1 1,1");
+}
 
 export default function GsapAnimations() {
-  useEffect(() => {
-    // Register GSAP plugins
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 1. Hero Headline Character / Line Entrance
-    const heroTitle = document.querySelector("#home h1");
-    if (heroTitle) {
-      gsap.fromTo(
-        heroTitle,
-        { opacity: 0, y: 50, rotateX: -15 },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 1.2,
-          ease: "power3.out",
-          delay: 0.2,
-        }
-      );
-    }
-
-    // 2. Parallax Scroll Effect on Hero Image
-    const heroImg = document.querySelector("#home img");
-    if (heroImg) {
-      gsap.to(heroImg, {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#home",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }
-
-    // 3. Section Titles ScrollReveal Fade & Lift
-    const sectionHeadings = document.querySelectorAll("h2");
-    sectionHeadings.forEach((heading) => {
-      gsap.fromTo(
-        heading,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: heading,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
-
-    // 4. Glass Cards Batch Stagger
-    const cards = document.querySelectorAll(".glass-card");
+  useGSAP(() => {
+    // 1. GEN Z 3D CARD MOUSE TILT EFFECT
+    const cards = document.querySelectorAll(".showcase-card, .glass-card, .glass-glow-card");
     cards.forEach((card) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 45, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
+      const element = card as HTMLElement;
+
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate rotation angles (max 12 deg)
+        const rotateX = ((y - centerY) / centerY) * -12;
+        const rotateY = ((x - centerX) / centerX) * 12;
+
+        gsap.to(element, {
+          transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.025, 1.025, 1.025)`,
+          duration: 0.35,
           ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 88%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+          overwrite: "auto",
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(element, {
+          transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+          duration: 0.6,
+          ease: "elastic.out(1, 0.4)",
+          overwrite: "auto",
+        });
+      };
+
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("mouseleave", handleMouseLeave);
     });
 
-    // 5. GSAP Magnetic Hover Effect on Buttons
-    const magneticBtns = document.querySelectorAll(".btn-teal, .btn-teal-outline, .recruitment-pill");
+    // 2. HERO MOUSE PARALLAX TILT
+    const heroContent = document.querySelector("#home .relative.z-10");
+    if (heroContent) {
+      const handleWindowMouseMove = (e: MouseEvent) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 30;
+        const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+        gsap.to(heroContent, {
+          rotateY: x * 0.5,
+          rotateX: -y * 0.5,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      };
+
+      window.addEventListener("mousemove", handleWindowMouseMove);
+    }
+
+    // 3. MAGNETIC HOVER EFFECT ON BUTTONS
+    const magneticBtns = document.querySelectorAll(
+      ".btn-teal, .btn-teal-outline, .liquid-glass-btn, .recruitment-pill"
+    );
     magneticBtns.forEach((btn) => {
       const element = btn as HTMLElement;
-      element.addEventListener("mousemove", (e) => {
+
+      const handleMouseMove = (e: MouseEvent) => {
         const rect = element.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
 
         gsap.to(element, {
-          x: x * 0.25,
-          y: y * 0.25,
+          x: x * 0.35,
+          y: y * 0.35,
+          scale: 1.05,
           duration: 0.3,
           ease: "power2.out",
         });
-      });
+      };
 
-      element.addEventListener("mouseleave", () => {
+      const handleMouseLeave = () => {
         gsap.to(element, {
           x: 0,
           y: 0,
-          duration: 0.5,
-          ease: "elastic.out(1, 0.4)",
+          scale: 1,
+          duration: 0.6,
+          ease: "elastic.out(1.2, 0.4)",
         });
-      });
-    });
+      };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("mouseleave", handleMouseLeave);
+    });
+  });
 
   return null;
 }

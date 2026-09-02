@@ -1,9 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+import { useGSAP } from "@gsap/react";
 import { NAV_LINKS, LANGUAGES } from "@/lib/data";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, Observer);
+}
 
 interface NavbarProps {
   onOpenSignUp: () => void;
@@ -14,6 +22,55 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState("English");
+
+  const headerRef = useRef<HTMLElement>(null);
+  const navInnerRef = useRef<HTMLElement>(null);
+
+  // GSAP ScrollTrigger & Observer for Sticky Nav Behavior
+  useGSAP(() => {
+    if (!headerRef.current || !navInnerRef.current) return;
+
+    // 1. Header background fade-in (opacity 0 -> 0.95, backdrop-blur) past 50px
+    ScrollTrigger.create({
+      start: "top+=50 top",
+      onUpdate: (self) => {
+        if (self.scroll() > 50) {
+          navInnerRef.current?.classList.add("scrolled-nav");
+        } else {
+          navInnerRef.current?.classList.remove("scrolled-nav");
+        }
+      },
+    });
+
+    // 2. Observer plugin to detect scroll direction (hide on scroll-down, show on scroll-up)
+    Observer.create({
+      type: "scroll,touch",
+      onDown: () => {
+        if (window.scrollY > 100) {
+          gsap.to(headerRef.current, {
+            yPercent: -130,
+            duration: 0.35,
+            ease: "power2.out",
+          });
+        }
+      },
+      onUp: () => {
+        gsap.to(headerRef.current, {
+          yPercent: 0,
+          duration: 0.35,
+          ease: "power2.out",
+        });
+      },
+      onChangeY: () => {
+        if (window.scrollY < 50) {
+          gsap.to(headerRef.current, {
+            yPercent: 0,
+            duration: 0.2,
+          });
+        }
+      },
+    });
+  });
 
   // Lock background scroll when mobile menu is open
   useEffect(() => {
@@ -43,9 +100,15 @@ export default function Navbar({ onOpenSignUp }: NavbarProps) {
         </Link>
       </div>
 
-      {/* Floating Center Pill Navigation Bar with Liquid Glassmorphism */}
-      <header className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[90vw] sm:w-auto max-w-5xl">
-        <nav className="liquid-glass-nav rounded-full px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center justify-between md:justify-start gap-2 sm:gap-3.5 transition-all">
+      {/* Floating Center Pill Navigation Bar with GSAP Observer & ScrollTrigger */}
+      <header
+        ref={headerRef}
+        className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[90vw] sm:w-auto max-w-5xl transition-transform transform-gpu"
+      >
+        <nav
+          ref={navInnerRef}
+          className="liquid-glass-nav rounded-full px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center justify-between md:justify-start gap-2 sm:gap-3.5 transition-all duration-300"
+        >
           {/* Left 3D Liquid Ribbon Circle Logo */}
           <Link
             href="#home"

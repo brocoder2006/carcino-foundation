@@ -1,59 +1,175 @@
 "use client";
 
-import { motion, MotionProps, Variants } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomEase } from "gsap/CustomEase";
+import { useGSAP } from "@gsap/react";
 
-interface ScrollRevealProps extends MotionProps {
-  children: React.ReactNode;
-  className?: string;
-  variant?: "fadeUp" | "fadeScale" | "fadeLeft" | "fadeRight" | "scaleIn";
-  staggerDelay?: number;
-  index?: number;
-  once?: boolean;
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, CustomEase);
+  CustomEase.create("gsapEase", "M0,0 C0.65,0 0.35,1 1,1");
 }
 
-const variants: Record<string, Variants> = {
-  fadeUp: {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  },
-  fadeScale: {
-    hidden: { opacity: 0, scale: 0.98 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
-  },
-  fadeLeft: {
-    hidden: { opacity: 0, x: -40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  },
-  fadeRight: {
-    hidden: { opacity: 0, x: 40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  },
-  scaleIn: {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
-  },
-};
+export type RevealVariant = "3dFlip" | "maskUp" | "skewSlide" | "elasticScale" | "fadeUp";
+
+interface ScrollRevealProps {
+  children: React.ReactNode;
+  className?: string;
+  variant?: RevealVariant;
+  delay?: number;
+  duration?: number;
+  startTrigger?: string;
+}
 
 export default function ScrollReveal({
   children,
   className = "",
-  variant = "fadeUp",
-  staggerDelay = 0.08,
-  index = 0,
-  once = true,
-  ...props
+  variant = "3dFlip",
+  delay = 0,
+  duration = 0.85,
+  startTrigger = "top 85%",
 }: ScrollRevealProps) {
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const el = elementRef.current;
+      if (!el) return;
+
+      // GSAP Next-Level Awwwards Scroll Reveal Variants
+      switch (variant) {
+        case "3dFlip":
+          gsap.fromTo(
+            el,
+            {
+              opacity: 0,
+              y: 65,
+              rotateX: -35,
+              transformPerspective: 1000,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+              duration,
+              delay,
+              ease: "gsapEase",
+              transformPerspective: 1000,
+              scrollTrigger: {
+                trigger: el,
+                start: startTrigger,
+                toggleActions: "play none none none",
+              },
+            }
+          );
+          break;
+
+        case "maskUp":
+          gsap.fromTo(
+            el,
+            {
+              opacity: 0,
+              clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+              y: 40,
+            },
+            {
+              opacity: 1,
+              clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+              y: 0,
+              duration: duration * 1.1,
+              delay,
+              ease: "gsapEase",
+              scrollTrigger: {
+                trigger: el,
+                start: startTrigger,
+                toggleActions: "play none none none",
+              },
+            }
+          );
+          break;
+
+        case "skewSlide":
+          gsap.fromTo(
+            el,
+            {
+              opacity: 0,
+              x: -50,
+              skewY: 6,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              skewY: 0,
+              duration,
+              delay,
+              ease: "gsapEase",
+              scrollTrigger: {
+                trigger: el,
+                start: startTrigger,
+                toggleActions: "play none none none",
+              },
+            }
+          );
+          break;
+
+        case "elasticScale":
+          gsap.fromTo(
+            el,
+            {
+              opacity: 0,
+              scale: 0.82,
+              y: 35,
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: duration * 1.2,
+              delay,
+              ease: "elastic.out(1.05, 0.5)",
+              scrollTrigger: {
+                trigger: el,
+                start: startTrigger,
+                toggleActions: "play none none none",
+              },
+            }
+          );
+          break;
+
+        case "fadeUp":
+        default:
+          gsap.fromTo(
+            el,
+            {
+              opacity: 0,
+              y: 45,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration,
+              delay,
+              ease: "gsapEase",
+              scrollTrigger: {
+                trigger: el,
+                start: startTrigger,
+                toggleActions: "play none none none",
+              },
+            }
+          );
+          break;
+      }
+    },
+    { scope: elementRef }
+  );
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, margin: "-100px" }}
-      variants={variants[variant]}
-      transition={{ delay: index * staggerDelay }}
-      className={className}
-      {...props}
+    <div
+      ref={elementRef}
+      className={`will-change-transform transform-gpu ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
