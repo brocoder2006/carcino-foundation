@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -116,12 +117,14 @@ export default function HeroSection() {
         <motion.div
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full"
+          className="w-full h-full relative"
         >
-          <img
+          <Image
             src="/images/aesthetic-hero-bg.png"
             alt="The Carcino Foundation Campaign Wallpaper"
-            className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08] saturate-[1.15]"
+            fill
+            priority
+            className="object-cover object-center filter brightness-[0.75] contrast-[1.08] saturate-[1.15]"
           />
         </motion.div>
 
