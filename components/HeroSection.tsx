@@ -22,7 +22,7 @@ export default function HeroSection() {
     () => {
       // 1. HERO SCRAMBLE-IN TEXT ANIMATION
       if (headlineRef.current) {
-        // Start state: set initial jumbled texture
+        // Start state: set initial randomized jumbled text texture
         headlineRef.current.innerText = "%X8#kL9@!0?&m$";
 
         gsap.to(headlineRef.current, {
@@ -34,21 +34,7 @@ export default function HeroSection() {
             revealDelay: 0.3,
           },
           ease: "power2.out",
-          delay: 0.3,
-          onComplete: () => {
-            // Apply Awwwards calligraphic first-letter cursive styling in WHITE on each word
-            if (headlineRef.current) {
-              headlineRef.current.innerHTML = `
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">B</span><span class="font-heading font-semibold text-white tracking-tight">reaking</span></span> 
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">D</span><span class="font-heading font-semibold text-white tracking-tight">own</span></span> 
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">C</span><span class="font-heading font-semibold text-white tracking-tight">ancer</span></span> 
-                <span className="inline-block"><span class="font-heading font-semibold text-white tracking-tight">for</span></span> 
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">E</span><span class="font-heading font-semibold text-white tracking-tight">veryone,</span></span> 
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">W</span><span class="font-heading font-semibold text-white tracking-tight">ith</span></span> 
-                <span className="inline-block"><span class="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">P</span><span class="font-heading font-semibold text-white tracking-tight">ride.</span></span>
-              `;
-            }
-          },
+          delay: 0.3, // Trigger on load with 0.3s delay after page paint
         });
       }
     },
@@ -83,44 +69,18 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto font-winter-solace">
         {/* Eyebrow Label */}
-        <span className="eyebrow-label block mb-4 tracking-widest text-xs sm:text-sm text-teal drop-shadow-sm uppercase font-mono font-semibold">
+        <span className="eyebrow-label block mb-4 tracking-widest text-xs sm:text-sm text-teal drop-shadow-sm uppercase font-winter-solace">
           PRIDE MONTH CAMPAIGN · HEALTH EQUITY FOR ALL
         </span>
 
-        {/* HERO HEADLINE WITH WHITE CURSIVE INITIAL LETTER FOR EACH WORD */}
+        {/* HERO SCRAMBLE-IN HEADLINE */}
         <h1
           ref={headlineRef}
-          className="text-[clamp(2.2rem,5.5vw,4.8rem)] leading-[1.12] text-white max-w-4xl drop-shadow-[0_10px_35px_rgba(255,255,255,0.25)] select-none min-h-[1.5em] px-2 text-center"
+          className="font-winter-solace text-[clamp(2.2rem,5.5vw,4.8rem)] leading-[1.08] tracking-widest text-white uppercase max-w-4xl drop-shadow-[0_10px_35px_rgba(255,255,255,0.25)] select-none min-h-[1.5em] px-2 text-center font-normal"
         >
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">B</span>
-            <span className="font-heading font-semibold text-white tracking-tight">reaking</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">D</span>
-            <span className="font-heading font-semibold text-white tracking-tight">own</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">C</span>
-            <span className="font-heading font-semibold text-white tracking-tight">ancer</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-heading font-semibold text-white tracking-tight">for</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">E</span>
-            <span className="font-heading font-semibold text-white tracking-tight">veryone,</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">W</span>
-            <span className="font-heading font-semibold text-white tracking-tight">ith</span>
-          </span>{" "}
-          <span className="inline-block">
-            <span className="font-swash-serif italic text-white text-[1.2em] font-normal drop-shadow-md">P</span>
-            <span className="font-heading font-semibold text-white tracking-tight">ride.</span>
-          </span>
+          Breaking Down Cancer for Everyone, With Pride.
         </h1>
 
         {/* Supporting Subtitle Paragraph */}
@@ -128,7 +88,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-body text-[#E2E8F0]/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-6 leading-relaxed text-center font-[400] drop-shadow-sm"
+          className="font-winter-solace text-[#E2E8F0]/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-6 leading-relaxed text-center font-[400] drop-shadow-sm"
         >
           Cancer affects millions of lives—this Pride Month, we stand for dignity, visibility, resilience, and compassionate healthcare for everyone.
         </motion.p>
