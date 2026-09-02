@@ -15,8 +15,6 @@ if (typeof window !== "undefined") {
 export default function MissionSection() {
   const containerRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const sparkRef = useRef<HTMLDivElement>(null);
-  const orbRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -42,34 +40,7 @@ export default function MissionSection() {
         );
       }
 
-      // 2. Parallax Floating Decorative Sparks & Orbs
-      if (sparkRef.current) {
-        gsap.to(sparkRef.current, {
-          y: -110,
-          rotation: 25,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            scrub: 1.5,
-            start: "top bottom",
-            end: "bottom top",
-          },
-        });
-      }
-
-      if (orbRef.current) {
-        gsap.to(orbRef.current, {
-          y: -160,
-          rotation: -30,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            scrub: 2,
-            start: "top bottom",
-            end: "bottom top",
-          },
-        });
-      }
-
-      // 3. Awwwards Showcase Card Batch Stagger
+      // 2. Awwwards Showcase Card Batch Stagger
       const cards = containerRef.current.querySelectorAll(".showcase-card");
       if (cards.length > 0) {
         gsap.set(cards, { opacity: 0, scale: 0.88, y: 45 });
@@ -101,43 +72,6 @@ export default function MissionSection() {
     >
       {/* Background Radial Glow Spotlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-600/10 via-teal/10 to-pink-500/10 rounded-full blur-[140px] pointer-events-none" />
-
-      {/* Floating Decorative Parallax Spark */}
-      <div
-        ref={sparkRef}
-        className="absolute top-16 right-[10%] z-20 pointer-events-none opacity-80 filter drop-shadow-xl"
-        aria-hidden="true"
-      >
-        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
-          <path
-            d="M50 0 L62 38 L100 50 L62 62 L50 100 L38 62 L0 50 L38 38 Z"
-            fill="url(#mission-spark-grad)"
-          />
-          <defs>
-            <linearGradient id="mission-spark-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#4CD97B" />
-              <stop offset="100%" stopColor="#4DA3FF" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Floating Decorative Parallax Ring */}
-      <div
-        ref={orbRef}
-        className="absolute bottom-20 left-[8%] z-20 pointer-events-none opacity-70 filter drop-shadow-2xl"
-        aria-hidden="true"
-      >
-        <svg width="95" height="95" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="38" stroke="url(#mission-ring-grad)" strokeWidth="7" />
-          <defs>
-            <linearGradient id="mission-ring-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#A66DFF" />
-              <stop offset="100%" stopColor="#FF5A5F" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Heading Header */}
