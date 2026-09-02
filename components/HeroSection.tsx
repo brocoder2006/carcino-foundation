@@ -69,16 +69,16 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto font-heading">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto font-winter-solace">
         {/* Eyebrow Label */}
-        <span className="eyebrow-label block mb-4 tracking-widest text-xs sm:text-sm text-teal drop-shadow-sm uppercase font-heading font-semibold">
+        <span className="eyebrow-label block mb-4 tracking-widest text-xs sm:text-sm text-teal drop-shadow-sm uppercase font-winter-solace">
           PRIDE MONTH CAMPAIGN · HEALTH EQUITY FOR ALL
         </span>
 
         {/* HERO SCRAMBLE-IN HEADLINE */}
         <h1
           ref={headlineRef}
-          className="font-heading font-[800] text-[clamp(2.2rem,5.5vw,4.8rem)] leading-[1.08] tracking-tight text-white uppercase max-w-4xl drop-shadow-[0_10px_35px_rgba(255,255,255,0.25)] select-none min-h-[1.5em] px-2 text-center"
+          className="font-winter-solace text-[clamp(2.2rem,5.5vw,4.8rem)] leading-[1.08] tracking-widest text-white uppercase max-w-4xl drop-shadow-[0_10px_35px_rgba(255,255,255,0.25)] select-none min-h-[1.5em] px-2 text-center font-normal"
         >
           Breaking Down Cancer for Everyone, With Pride.
         </h1>
@@ -88,7 +88,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-body text-[#E2E8F0]/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-6 leading-relaxed text-center font-[400] drop-shadow-sm"
+          className="font-winter-solace text-[#E2E8F0]/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-6 leading-relaxed text-center font-[400] drop-shadow-sm"
         >
           Cancer affects millions of lives—this Pride Month, we stand for dignity, visibility, resilience, and compassionate healthcare for everyone.
         </motion.p>
