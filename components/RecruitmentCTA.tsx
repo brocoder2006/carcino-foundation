@@ -16,7 +16,7 @@ export default function RecruitmentCTA() {
   ];
 
   return (
-    <section id="recruitment" className="relative py-20 lg:py-28 bg-[#0B0F1A]">
+    <section id="recruitment" className="relative py-20 lg:py-28 bg-[#0F0A1C]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <ScrollReveal variant="3dFlip">
           <div className="bg-[#0E0C18]/95 border border-purple-500/30 rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.7)] flex flex-col lg:flex-row items-center justify-between gap-10">

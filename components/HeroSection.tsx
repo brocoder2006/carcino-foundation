@@ -64,7 +64,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Rich Atmospheric Purple Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/65 via-navy-950/50 to-[#0B0F1A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/65 via-navy-950/50 to-[#0F0A1C]" />
         <div className="absolute inset-0 bg-radial-vignette opacity-70 pointer-events-none" />
       </div>
 
@@ -124,7 +124,7 @@ export default function HeroSection() {
       </div>
 
       {/* Section Bottom Vignette Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0B0F1A] via-[#0B0F1A]/80 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0F0A1C] via-[#0F0A1C]/80 to-transparent pointer-events-none" />
     </section>
   );
 }

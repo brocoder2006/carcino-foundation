@@ -80,7 +80,7 @@ export default function DuplicateTextRevealSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#0B0F1A] py-20 overflow-hidden"
+      className="relative w-full bg-[#0F0A1C] py-20 overflow-hidden"
     >
       <div
         ref={pinSectionRef}

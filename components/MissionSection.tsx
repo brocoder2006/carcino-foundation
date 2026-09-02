@@ -68,7 +68,7 @@ export default function MissionSection() {
     <section
       id="mission"
       ref={containerRef}
-      className="py-28 lg:py-36 relative overflow-hidden bg-[#0B0F1A] select-none"
+      className="py-28 lg:py-36 relative overflow-hidden bg-[#0F0A1C] select-none"
     >
       {/* Background Radial Glow Spotlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-600/10 via-teal/10 to-pink-500/10 rounded-full blur-[140px] pointer-events-none" />

@@ -9,16 +9,16 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          950: "#0B0F1A", // near-black navy background
-          900: "#12161F", // card surface
-          800: "#1A202C", // hover card surface
-          700: "#242C3F",
+          950: "#0F0A1C", // rich royal purple dark background
+          900: "#180D2E", // purple card surface
+          800: "#231245", // hover purple card surface
+          700: "#2E1858",
         },
         teal: {
-          DEFAULT: "#1FB6A8",
-          light: "#34D1C2",
-          dark: "#17968A",
-          glow: "rgba(31, 182, 168, 0.25)",
+          DEFAULT: "#C084FC", // electric purple accent
+          light: "#E9D5FF",
+          dark: "#9333EA",
+          glow: "rgba(192, 132, 252, 0.3)",
         },
         pride: {
           red: "#FF5A5F",
@@ -26,7 +26,7 @@ const config: Config = {
           yellow: "#FFE566",
           green: "#4CD97B",
           blue: "#4DA3FF",
-          purple: "#A66DFF",
+          purple: "#C084FC",
         },
       },
       fontFamily: {
@@ -42,10 +42,10 @@ const config: Config = {
         cinzel: ["var(--font-cinzel)", "Cinzel Decorative", "serif"],
       },
       boxShadow: {
-        glass: "0 0 0 1px rgba(255, 255, 255, 0.08)",
-        "glass-hover": "0 0 0 1px rgba(31, 182, 168, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4)",
-        "teal-glow": "0 0 25px rgba(31, 182, 168, 0.35), 0 0 50px rgba(31, 182, 168, 0.15)",
-        "pride-glow": "0 10px 40px -10px rgba(166, 109, 255, 0.2)",
+        glass: "0 0 0 1px rgba(255, 255, 255, 0.12)",
+        "glass-hover": "0 0 0 1px rgba(192, 132, 252, 0.5), 0 20px 40px rgba(0, 0, 0, 0.6)",
+        "teal-glow": "0 0 25px rgba(192, 132, 252, 0.45), 0 0 50px rgba(168, 85, 247, 0.25)",
+        "pride-glow": "0 10px 40px -10px rgba(192, 132, 252, 0.3)",
       },
       animation: {
         "ken-burns": "kenBurns 12s ease-in-out infinite alternate",
@@ -71,4 +71,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-

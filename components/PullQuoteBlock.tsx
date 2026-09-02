@@ -20,7 +20,7 @@ export default function PullQuoteBlock({
   onButtonClick,
 }: PullQuoteBlockProps) {
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-[#0B0F1A]">
+    <section className="py-20 lg:py-28 relative overflow-hidden bg-[#0F0A1C]">
       {/* Background Subtle Gradient Glow */}
       <div className="absolute inset-0 bg-navy-900/30 backdrop-blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal/5 rounded-full blur-[140px] pointer-events-none" />

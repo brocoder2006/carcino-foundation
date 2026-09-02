@@ -93,7 +93,7 @@ export default function ArticleGallery() {
     <section
       id="articles"
       ref={containerRef}
-      className="relative py-28 lg:py-36 bg-[#0B0F1A]"
+      className="relative py-28 lg:py-36 bg-[#0F0A1C]"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
         {/* Section Header */}

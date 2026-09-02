@@ -36,7 +36,7 @@ export default function Home() {
   const [isTributeOpen, setIsTributeOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-[#0B0F1A] text-[#F5F6F8] selection:bg-teal/30 selection:text-white">
+    <div className="relative min-h-screen bg-[#0F0A1C] text-[#F5F6F8] selection:bg-purple-500/30 selection:text-white">
       {/* Awwwards GSAP Preloader Curtain Entrance */}
       <PageLoader />
 
@@ -56,8 +56,8 @@ export default function Home() {
       <div className="noise-overlay" aria-hidden="true" />
 
       {/* Ambient background glow shapes */}
-      <div className="fixed top-20 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-teal/5 rounded-full blur-[120px] pointer-events-none z-0 overflow-hidden" />
-      <div className="fixed top-1/2 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-pride-purple/5 rounded-full blur-[140px] pointer-events-none z-0 overflow-hidden" />
+      <div className="fixed top-20 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-purple-600/10 rounded-full blur-[130px] pointer-events-none z-0 overflow-hidden" />
+      <div className="fixed top-1/2 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-[150px] pointer-events-none z-0 overflow-hidden" />
 
       {/* 1. Sticky Navigation Bar with Observer & ScrollTrigger */}
       <Navbar onOpenSignUp={() => setIsSignUpOpen(true)} />

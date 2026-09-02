@@ -6,7 +6,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function OncologistPanel() {
   return (
-    <section id="oncologists" className="relative py-24 lg:py-32 bg-[#0B0F1A]">
+    <section id="oncologists" className="relative py-24 lg:py-32 bg-[#0F0A1C]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <ScrollReveal variant="3dFlip">
           <div className="text-center max-w-2xl mx-auto mb-14">
